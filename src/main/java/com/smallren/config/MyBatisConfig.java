@@ -16,9 +16,6 @@ import javax.sql.DataSource;
  * @Description:  mybatis配置类
  * @Author: renbaojia
  * @CreateDate: 2019/8/8 11:25
- * @UpdateUser:
- * @UpdateDate: 2019/8/8 11:25
- * @UpdateRemark:
  */
 @EnableTransactionManagement
 @Configuration

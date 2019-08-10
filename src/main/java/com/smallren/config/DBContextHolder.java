@@ -1,18 +1,15 @@
 package com.smallren.config;
 
-;
 
 /**
  * @Description: DBContextHolder
  * @Author: renbaojia
  * @CreateDate: 2019/8/8 13:59
- * @UpdateUser:
- * @UpdateDate: 2019/8/8 13:59
- * @UpdateRemark:
  */
 
 
 public class DBContextHolder {
+
     private static final ThreadLocal<DBTypeEnum> contextHolder = new ThreadLocal<>();
 
     public static void set(DBTypeEnum dbType) {

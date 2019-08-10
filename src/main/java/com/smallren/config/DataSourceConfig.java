@@ -24,6 +24,10 @@ import java.util.Map;
 public class DataSourceConfig {
     private final static Logger LOGGER = LoggerFactory.getLogger(DataSourceConfig.class);
 
+    /**
+     * 加载配置文件的属性
+     * @return DataSource
+     */
     @Bean
     @ConfigurationProperties("spring.datasource.master")
     public DataSource masterDataSource() {
@@ -31,6 +35,10 @@ public class DataSourceConfig {
         return DataSourceBuilder.create().build();
     }
 
+    /**
+     * 加载配置文件的属性
+     * @return DataSource
+     */
     @Bean
     @ConfigurationProperties("spring.datasource.slave")
     public DataSource slaveDataSource() {
@@ -38,14 +46,21 @@ public class DataSourceConfig {
         return DataSourceBuilder.create().build();
     }
 
-
+    /**
+     * 配置数据源
+     * @param masterDataSource
+     * @param slaveDataSource
+     * @return
+     */
     @Bean
     public DataSource myRoutingDataSource(@Qualifier("masterDataSource") DataSource masterDataSource,
                                           @Qualifier("slaveDataSource") DataSource slaveDataSource) {
         Map<Object, Object> targetDataSources = new HashMap<>();
+        //设置数据源
         targetDataSources.put(DBTypeEnum.MASTER, masterDataSource);
         targetDataSources.put(DBTypeEnum.SLAVE, slaveDataSource);
         MyRoutingDataSource myRoutingDataSource = new MyRoutingDataSource();
+        // 设置默认的数据源 方法不再切面上的时候使用默认的数据源
         myRoutingDataSource.setDefaultTargetDataSource(masterDataSource);
         myRoutingDataSource.setTargetDataSources(targetDataSources);
         return myRoutingDataSource;

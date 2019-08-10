@@ -13,9 +13,6 @@ import java.util.List;
  * @Description: user控制器类
  * @Author: renbaojia
  * @CreateDate: 2019/8/8 10:42
- * @UpdateUser:
- * @UpdateDate: 2019/8/8 10:42
- * @UpdateRemark:
  */
 @Controller
 @RequestMapping("/user")

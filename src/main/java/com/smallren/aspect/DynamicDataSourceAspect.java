@@ -2,6 +2,7 @@ package com.smallren.aspect;
 
 
 import com.smallren.config.DBContextHolder;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -13,16 +14,10 @@ import org.springframework.stereotype.Component;
  * @Description: 切换数据源
  * @Author: renbaojia
  * @CreateDate: 2019/8/8 11:35
- * @UpdateUser:
- * @UpdateDate: 2019/8/8 11:35
- * @UpdateRemark:
  */
 @Aspect
-
 @Order(-10)//保证该AOP在@Transactional之前执行
-
 @Component
-
 public class DynamicDataSourceAspect {
 
 
@@ -50,7 +45,7 @@ public class DynamicDataSourceAspect {
     }
 
     @Before("readPointcut()")
-    public void read() {
+    public void read(JoinPoint joinPoint) {
         DBContextHolder.slave();
     }
 
