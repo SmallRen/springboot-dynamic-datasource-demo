@@ -9,6 +9,9 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import static com.smallren.config.DBTypeEnum.MASTER;
+import static com.smallren.config.DBTypeEnum.SLAVE;
+
 
 /**
  * @Description: 切换数据源
@@ -46,12 +49,13 @@ public class DynamicDataSourceAspect {
 
     @Before("readPointcut()")
     public void read(JoinPoint joinPoint) {
-        DBContextHolder.slave();
+            DBContextHolder.slave();
+
     }
 
     @Before("writePointcut()")
     public void write() {
-        DBContextHolder.master();
+            DBContextHolder.master();
     }
 
 

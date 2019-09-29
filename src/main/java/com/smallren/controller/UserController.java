@@ -1,6 +1,6 @@
 package com.smallren.controller;
 
-import com.smallren.entity.User;
+import com.smallren.entity.SysUser;
 import com.smallren.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,8 +27,8 @@ public class UserController {
      */
     @RequestMapping("/select")
     @ResponseBody
-    public List<User> select() {
-        return userService.select();
+    public List<SysUser> select() {
+        return userService.list();
     }
 
     /**
@@ -39,7 +39,7 @@ public class UserController {
      */
     @RequestMapping("/save")
     @ResponseBody
-    public int save(User user) {
+    public int save(SysUser user) {
         return userService.save(user);
     }
 }

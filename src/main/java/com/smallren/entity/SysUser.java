@@ -1,20 +1,20 @@
 package com.smallren.entity;
 
-/**
- * @Description: java类作用描述
- * @Author: renbaojia
- * @CreateDate: 2019/8/8 10:57
- */
-public class User {
-    private int id;
+import java.io.Serializable;
+
+public class SysUser implements Serializable {
+
+    private Integer id;
+
     private String username;
+
     private String password;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -23,7 +23,7 @@ public class User {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 
     public String getPassword() {
@@ -31,6 +31,6 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 }

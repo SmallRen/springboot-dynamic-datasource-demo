@@ -2,20 +2,44 @@ server:
   port: 8081
 spring:
   datasource:
+    #主数据库
     master:
-      jdbc-url: jdbc:mysql://192.168.100.38:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+      jdbc-url: jdbc:mysql://118.24.166.159:3306/blog?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
       username: root
-      password: 123456
+      password: r011698.
       driver-class-name: com.mysql.cj.jdbc.Driver
+      #从数据库
     slave:
-      jdbc-url: jdbc:mysql://192.168.100.39:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+      jdbc-url: jdbc:mysql://47.100.95.64:3306/blog?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
       username: root
-      password: 123456
+      password: r011698.
       driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    # redis数据库索引（默认为0），我们使用索引为3的数据库，避免和其他数据库冲突
+    database: 3
+    # redis服务器地址（默认为localhost）
+    host: 118.24.166.159
+    # redis端口（默认为6379）
+    port: 6379
+    # redis访问密码（默认为空）
+    password:
+    # redis连接超时时间（单位为毫秒）
+    timeout: 300
+    # redis连接池配置
+    jedis:
+      pool:
+        # 最大可用连接数（默认为8，负数表示无限）
+        max-active: 8
+        # 最大空闲连接数（默认为8，负数表示无限）
+        max-idle: 8
+        # 最小空闲连接数（默认为0，该值只有为正数才有作用）
+        min-idle: 0
+        # 从连接池中获取连接最大等待时间（默认为-1，单位为毫秒，负数表示无限）
+        max-wait: -1
 # 打印sql
 logging:
   level:
-    com.smallren : debug
+    com.smallren: debug
 #1.加载MyBatis配置文件
 mybatis:
   mapper-locations: classpath:mapper/*.xml

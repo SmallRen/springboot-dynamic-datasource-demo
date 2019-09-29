@@ -26,6 +26,7 @@ public class DataSourceConfig {
 
     /**
      * 加载配置文件的属性
+     *
      * @return DataSource
      */
     @Bean
@@ -37,6 +38,7 @@ public class DataSourceConfig {
 
     /**
      * 加载配置文件的属性
+     *
      * @return DataSource
      */
     @Bean
@@ -48,6 +50,7 @@ public class DataSourceConfig {
 
     /**
      * 配置数据源
+     *
      * @param masterDataSource
      * @param slaveDataSource
      * @return
